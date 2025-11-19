@@ -8,7 +8,7 @@ from database.repositories.store_repository import StoreRepository
 from v1.descriptions.store_desc import STORE_DOCS
 from database.database import get_db
 
-router = APIRouter(prefix="/stores", tags=["stores"])
+router = APIRouter(prefix="/store", tags=["store"])
 
 @router.post("", response_model=BaseResponseWrapper, **STORE_DOCS["create_store"])
 def create_store(payload: CreateStoreRequest, db: Session = Depends(get_db)):
