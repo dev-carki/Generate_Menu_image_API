@@ -19,4 +19,4 @@ class CreateStoreStoreResponse(StoreBase):
     updated_at: Optional[datetime] = None
 
     class Config:
-        orm_mode = True  # SQLAlchemy ORM 인스턴스를 자동 변환
+        from_attributes = True
