@@ -1,6 +1,18 @@
 fastapi
 uvicorn[standard]
-psycopg2-binary
+
+# ORM
 sqlalchemy
+
+# DB Driver 
+pymysql
+
+# Pydantic v2
 pydantic
+pydantic-core
+
+# ENV
 python-dotenv
+
+# Migration
+alembic

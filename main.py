@@ -1,10 +1,19 @@
 from fastapi import FastAPI
-from fastapi.openapi.utils import get_openapi
+from contextlib import asynccontextmanager
 
 from v1.routers.menu_board.menu_router import router as menu_router
+from v1.routers.store.store_router import router as store_router
+from database.database import Base, engine
 
-#from .database import Base, engine
-#from .routers import user_router
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # 앱 시작 시 실행
+    print("🚀 Starting up... Creating database tables if not exist.")
+    Base.metadata.create_all(bind=engine)
+
+    yield
+    # 앱 종료 시 실행
+    print("🛑 Shutting down... Cleaning up resources.")
 
 app = FastAPI(
     title="코드잇 고급 프로젝트 API 서버",       # 문서 상단 제목
@@ -16,10 +25,8 @@ app = FastAPI(
     openapi_url="/api/openapi.json", # OpenAPI JSON 경로 변경
 )
 
-# DB 테이블 생성
-# Base.metadata.create_all(bind=engine)
-
 # 라우터 등록
+app.include_router(store_router)
 app.include_router(menu_router)
 
 @app.get("/")

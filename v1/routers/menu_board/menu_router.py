@@ -2,11 +2,9 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from datetime import datetime
 
-from v1.schemas.base_model import BaseResponseWrapper
-from v1.schemas.menu_board.menu_model import CreateMenuImageRequest, CreateMenuImageWithReferenceRequest, CreateMenuImageResponse 
+from v1.schemas.base_dto import BaseResponseWrapper
+from v1.schemas.menu_board.menu_dto import CreateMenuImageRequest, CreateMenuImageWithReferenceRequest, CreateMenuImageResponse 
 from v1.descriptions.menu_desc import MENU_IMAGE_DOCS
-# from ..database import SessionLocal
-# from .. import models, schemas
 
 router = APIRouter(prefix="/menu", tags=["menu"])
 
