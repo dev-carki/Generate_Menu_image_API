@@ -1,12 +1,15 @@
 FROM python:3.12-slim
 WORKDIR /app
 
-# system deps (필요시)
-RUN apt-get update && apt-get install -y build-essential
+# uv 설치
+RUN pip install uv
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY pyproject.toml .
+COPY uv.lock .
+
+# 패키지 설치
+RUN uv sync --no-dev --frozen
 
 COPY . .
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
