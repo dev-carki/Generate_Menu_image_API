@@ -1,5 +1,5 @@
 import os
-import httpx
+from httpx import AsyncClient, Timeout, ConnectTimeout, NetworkError
 from dotenv import load_dotenv
 from typing import Any, Dict, Optional
 
@@ -19,15 +19,14 @@ class MLApiClient:
         endpoint: str,              
         method: str,       
         data: Optional[Dict] = None,
-        params: Optional[Dict] = None,
-        timeout: int = 5
+        params: Optional[Dict] = None
     ) -> Dict[str, Any]:
 
         url = f"{self.base_url}{endpoint}"
         
-        print("🟢🟢🟢🟢 요청 URL 🟢🟢🟢🟢: ", url)
+        timeout = Timeout(connect=5.0, read=15.0)
 
-        async with httpx.AsyncClient(timeout=timeout) as client:
+        async with AsyncClient(timeout=timeout) as client:
 
             try:
                 response = await client.request(
@@ -37,10 +36,10 @@ class MLApiClient:
                     params=params
                 )
 
-            except httpx.ConnectTimeout:
+            except ConnectTimeout:
                 raise RuntimeError("ML_API_TIMEOUT")
 
-            except httpx.NetworkError:
+            except NetworkError:
                 raise RuntimeError("ML_API_UNREACHABLE")
 
             # Bad request
