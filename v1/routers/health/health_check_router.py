@@ -10,7 +10,7 @@ from database.database import get_db
 
 load_dotenv()
 
-SERVING_API_PORT = os.getenv("MODEL_SERVING_API_PORT")
+SERVING_API_PORT = os.getenv("MODEL_SERVING_API_URL")
 if not SERVING_API_PORT:
     raise RuntimeError("ML Model Serving Port is not set in .env")
 
