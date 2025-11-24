@@ -29,8 +29,11 @@ class Recommendation(BaseModel):
     reason: str
 
 class FilterConditions(BaseModel):
-    category: str
-    caffeine: str
+    category: Optional[str] = None
+    caffeine: Optional[str] = None
+    protein: Optional[str] = None
+    sugar: Optional[str] = None
+    calorie: Optional[str] = None
 
 class ParsedIntent(BaseModel):
     filter_conditions: FilterConditions

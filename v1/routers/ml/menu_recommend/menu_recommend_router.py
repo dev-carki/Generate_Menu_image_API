@@ -2,7 +2,7 @@ from fastapi import APIRouter, Body
 
 from v1.descriptions.menu_recommend_desc import MENU_RECOMMEND_DESC
 from v1.schemas.base_dto import BaseResponseWrapper
-from v1.schemas.menu_recommend.menu_recommend_dto import MenuRecommendRequestDTO, MenuRecommendResponseDTO
+from v1.schemas.menu_recommend.menu_recommend_dto import MenuRecommendRequestDTO
 from v1.routers.ml.common.service import MenuRecommendService
 from v1.routers.ml.common.req_exam import generate_menu_recommendation_body_param_example
 
