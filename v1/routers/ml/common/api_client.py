@@ -24,6 +24,8 @@ class MLApiClient:
     ) -> Dict[str, Any]:
 
         url = f"{self.base_url}{endpoint}"
+        
+        print("🟢🟢🟢🟢 요청 URL 🟢🟢🟢🟢: ", url)
 
         async with httpx.AsyncClient(timeout=timeout) as client:
 
