@@ -45,7 +45,7 @@ def health_check(db: Session = Depends(get_db)):
         check["status"] = "degraded"
 
     try:
-        r = requests.get(f"http://localhost:{SERVING_API_PORT}/api/v1/seasonal-story/health", timeout=1)
+        r = requests.get(f"{SERVING_API_PORT}/api/v1/seasonal-story/health", timeout=1)
         if r.status_code == 200:
             check["ml_server"] = {"status": "connected"}
         else:
