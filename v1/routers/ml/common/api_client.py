@@ -12,7 +12,7 @@ class MLApiClient:
     
     def __init__(self):
         # TODO: 실 서버 URL로 바꾸기 -> .env
-        self.base_url = os.getenv("ML_API_BASE_URL", "http://0.0.0.0:9090")
+        self.base_url = os.getenv("MODEL_SERVING_API_URL", "http://0.0.0.0:9090")
     
     async def request(
         self,
