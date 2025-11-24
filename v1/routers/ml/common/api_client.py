@@ -24,7 +24,7 @@ class MLApiClient:
 
         url = f"{self.base_url}{endpoint}"
         
-        timeout = Timeout(connect=5.0, read=15.0)
+        timeout = Timeout(connect=5.0, read=15.0, write=15.0, pool=15.0)
 
         async with AsyncClient(timeout=timeout) as client:
 
