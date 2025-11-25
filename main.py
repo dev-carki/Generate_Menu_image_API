@@ -5,6 +5,7 @@ from v1.routers.menu_board.menu_router import router as menu_router
 from v1.routers.store.store_router import router as store_router
 from v1.routers.health.health_check_router import router as health_router
 from v1.routers.ml.menu_recommend.menu_recommend_router import router as ml_recommendation_router
+from v1.routers.menu_list.menu_list_router import router as menu_list_router
 from database.database import Base, engine
 
 @asynccontextmanager
@@ -30,6 +31,7 @@ app = FastAPI(
 # 라우터 등록
 app.include_router(store_router)
 app.include_router(ml_recommendation_router)
+app.include_router(menu_list_router)
 app.include_router(menu_router)
 app.include_router(health_router)
 

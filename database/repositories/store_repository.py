@@ -1,4 +1,3 @@
-# app/crud.py
 from sqlalchemy.orm import Session
 from database.models.store.store_model import Store
 from v1.schemas.store.store_dto import CreateStoreRequest

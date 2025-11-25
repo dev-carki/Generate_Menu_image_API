@@ -1,4 +1,3 @@
-# app/models.py
 from sqlalchemy import Column, Integer, String, Time, DateTime, func, text
 from sqlalchemy.sql import expression
 from database.database import Base
