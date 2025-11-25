@@ -10,7 +10,7 @@ class MenuItemDTO(BaseModel):
     image_url: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class GetAllMenuResponseDTO(BaseModel):
     menu_id: int
@@ -19,4 +19,4 @@ class GetAllMenuResponseDTO(BaseModel):
     items: List[MenuItemDTO]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
