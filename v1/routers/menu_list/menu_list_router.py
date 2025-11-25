@@ -10,7 +10,7 @@ router = APIRouter(prefix="/menus", tags=["Menu"])
 
 @router.get("/store/{store_id}", response_model=BaseResponseWrapper)
 def get_menus_by_store(store_id: int, db: Session = Depends(get_db)):
-    menus = MenuListRepository.get_store_menu_categories(store_id, db)
+    menus = MenuListRepository.get_all_menu_list(store_id, db)
     
     menu_data = [GetAllMenuResponseDTO.model_validate(menu) for menu in menus]
      
