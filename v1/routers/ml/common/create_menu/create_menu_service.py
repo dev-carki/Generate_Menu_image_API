@@ -11,7 +11,7 @@ class CreateMenuService:
         ml_payload = {
             "auto_generate_descriptions": payload.auto_generate_descriptions,
             "auto_generate_images": payload.auto_generate_images,
-            "categories": payload.categories,
+            "categories": [c.model_dump() for c in payload.categories],
             "store_id": payload.store_id,
         }
 
