@@ -30,10 +30,10 @@ app = FastAPI(
 
 # 라우터 등록
 app.include_router(store_router)
-app.include_router(ml_recommendation_router)
 app.include_router(menu_list_router)
-app.include_router(menu_router)
 app.include_router(health_router)
+app.include_router(ml_recommendation_router)
+app.include_router(menu_router)
 
 @app.get("/")
 def root():
